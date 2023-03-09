@@ -193,7 +193,7 @@ switch(a) {
             } 
         }
         function Randomazer(min,max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
+            return Math.floor(Math.random() * (max - min)) + min;
         }
         let answ=``;
         if (num1<num2) {
@@ -209,6 +209,7 @@ switch(a) {
             let mass1 = [];
             for(let i=0;i<count;i++){
                 mass1[i]=mass[Randomazer(0,4)];
+                console.log(mass1[i]);
             }
             return `sampleArray([${mass}], ${count}) -> [${mass1}]`
         }
