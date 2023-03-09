@@ -4,10 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reseter.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Гребенникова В.В</title>
 </head>
 <body>
-    <h1>Гребенникова В.В - Лабораторная работа №9</h1>
-    <script src="main.js"></script>
+    <header>
+        <button id = "btn">Регистрация</button>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form  method="post" action="" id="reg">
+                    <ul>
+                        <li>
+                            <label for="email">Почта:</label>
+                            <input type="text" name="email" required placeholder="jaba@mail.com" id="email">
+                        </li>
+                        <li>
+                            <label for="password">Пароль:</label>
+                            <input type="password" name="password"  minlength="6" required minlength="6" placeholder="123456" id="password">
+                        </li>
+                    </ul>
+                    <div class="btns">
+                        <button type="button" class="showpassword">Показать пароль</button>
+                        <button type="submit">Отправить</button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </header>
+    <main>
+
+    </main>
 </body>
 </html>
