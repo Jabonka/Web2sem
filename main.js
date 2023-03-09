@@ -205,13 +205,16 @@ switch(a) {
         console.log(answ);
         break;
     case 5:
-        let mass = [1,2,3,4];
-        let mass1 = [];
-        let count = prompt('Введите количество чисел от 1 до 4');
-        for(let i=0;i<count;i++){
-            mass1[i]=mass[Randomazer(0,4)];
+        function SampArray(mass,count){
+            let mass1 = [];
+            for(let i=0;i<count;i++){
+                mass1[i]=mass[Randomazer(0,4)];
+            }
+            return `sampleArray([${mass}], ${count}) -> [${mass1}]`
         }
-        console.log(`sampleArray([${mass}], ${count}) -> [${mass1}]`);
+        let mass = [1,2,3,4];
+        let count = prompt('Введите количество чисел от 1 до 4');
+        console.log(SampArray(mass,count));
     // default:
     //     a=+prompt(`Введите номер задания от 1 до 5`);
     //     break;
