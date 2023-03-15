@@ -66,3 +66,12 @@ input{
 .btns{
     margin-top: 3rem;
 }
+
+.error-message {
+    font-size: 1.6rem;
+    line-height: 2rem;
+
+    min-height: 2rem;
+
+    color: red;
+}
