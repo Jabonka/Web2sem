@@ -7,9 +7,10 @@
 
 header{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
     padding: 3rem;
-    background-color: rgba(172, 233, 227, 0.5);
+    background-color: rgba(149, 197, 176, 0.5);
 }
 main{
     padding-left: 3rem;
@@ -42,11 +43,11 @@ label{
     padding: 20px;
     border-radius: 3rem;
     border: 1px solid #888;
-    width: 60%;
-    height: 40%;
+    width: 50%;
+    min-height: 40%;
 }
 .close{
-    color: #aaa;
+    color: #506a45;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -63,15 +64,27 @@ input{
     padding: 0.5rem;
 }
 
+h2{
+    text-align: center;
+}
+
 .btns{
-    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn{
+    border-radius: 1.5rem;
+    box-shadow: 8px 8px 4px rgba(58, 72, 64, 0.5) ;
+    background-color: azure;
+    height: 3rem;
 }
 
 .error-message {
     font-size: 1.6rem;
     line-height: 2rem;
-
     min-height: 2rem;
-
     color: red;
 }
