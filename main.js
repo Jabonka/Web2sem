@@ -42,6 +42,7 @@ function Proverka(event){
     }
 
     input.setCustomValidity(ErrorSms);
+    //input.reportValidity();
 
     const wrapper = input.closest(".input-error");
     const errorMsgElem = wrapper.querySelector(".error-message");
