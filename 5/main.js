@@ -3,8 +3,8 @@ const http=require('node:http');
 const PORT=3000;
 const host='127.0.0.1';
 
-let comments = ['5', 'sdf'];
-let users = {'name': 0}
+let comments = [];
+let users = {}
 
 function Bad(res){
     res.writeHead(400, {'Content-type':'text/plain'})
@@ -76,7 +76,6 @@ const server=http.createServer((req,res) => {
                             </tr>`
                     }
                     let resHtml = firstHtml + secondHtml + '</table>'
-                    console.log(resHtml);
                     res.end(resHtml)
                 })
                 
