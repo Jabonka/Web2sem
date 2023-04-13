@@ -160,4 +160,10 @@ dist
 .history
 .ionide
 
+node_modules
+.*
+!.gitignore
+!.travis.yml
+build
+
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode

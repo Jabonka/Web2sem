@@ -125,14 +125,14 @@ dt{
 }
 
 blockquote{
-  margin:0;
-  padding-left:2.5em;
+    margin:0;
+    padding-left:2.5em;
 }
 
 aside{
-  margin:0.5em 0;
-  font-style:italic;
-  color:#aaaaaa;
+    margin:0.5em 0;
+    font-style:italic;
+    color:#aaaaaa;
 }
 @media (min-width: 65rem){
     aside{
