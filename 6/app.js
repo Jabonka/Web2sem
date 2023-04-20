@@ -1,8 +1,10 @@
 var express=require('express');
-const router = require('./api/v1/route');
+const router = require('./api/v2/route')
 const {Autorization, BadRequest, Morgan,Helmet} = require('./api/v1/middleware');
 const bodyParser=require('body-parser');
+const {getDB,start}=require('./config/connDB')
 var cowsay = require("cowsay");
+
 
 
 var app=express();
@@ -14,18 +16,17 @@ const host='127.0.0.1';
 app.use(Helmet)
 app.use(Morgan)
 
-app.use(bodyParser.text());
+app.use(bodyParser.json());
 app.use(express.static('public'))
 
-console.log(cowsay.say({
-    text : "Muuuuu",
-    e : "O-",
-    T : "U "
-}));
+// console.log(cowsay.say({
+//     text : "Muuuuu",
+//     e : "O-",
+//     T : "U "
+// }));
 
-app.use('/api/v1', Autorization, router); //уровень маршрутизатора
+app.use('/api/v2', router); //уровень маршрутизатора
 app.use(BadRequest) //уровень приложения
-
 
 
 app.listen(PORT, host, () => {
