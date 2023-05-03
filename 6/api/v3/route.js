@@ -1,17 +1,14 @@
 var express = require('express');
-const { Validation } = require('../v1/middleware');
 var router = express.Router();
-const {getComments, postAddComments, getMyComments}=require('../../controllers/controllers')
+const {login, DeleteAcc, getAllModels, createModels, updateModel, getOneModel, deleteModel, getComments, postAddComments, getMyComments}=require('../../controllers/controllers')
 
 
-let comments = [];
 let users = {}
 
 router.get('/', function(req,res){
     res.send('Hello!');
 })
 router.get('/stats', function(req,res){
-    let data = req.body
     const name = req.headers['user-agent']
     let firstHtml =
         '<table>' +
@@ -42,6 +39,12 @@ router.get('/comments', getComments )
 router.get('/comments/:id', getMyComments)
 router.post('/comments',postAddComments)
 
-
+router.get('/models', getAllModels)
+router.get('/models/:id', getOneModel)
+router.post('/models', createModels)
+router.post('/login', login)
+router.put('/models/:id', updateModel)
+router.delete('/account/delete/:id', DeleteAcc)
+router.delete('/models/:id', deleteModel)
 
 module.exports = router;

@@ -1,8 +1,10 @@
 const morgan=require('morgan');
 const helmet=require('helmet');
+const {getApiKeys}=require('../../services/service')
 
 const Helmet=helmet();
-const Morgan=morgan(':method :url :status :res[content-length] - :response-time ms');
+const Morgan=morgan('tiny');
+
 
 function Validation(req, res, next) {
     const userInput = req.body;
@@ -14,9 +16,22 @@ function Validation(req, res, next) {
     next();
 }
 
-function Autorization(req,res,next) {
-    if (req.headers['api-key']!=='1234') {return res.send(400,'Неправильный ключ API')};
-    next();
+async function Autorization(req,res,next) {
+    const keys = await getApiKeys()
+    let api=Number(req.headers["api_key"]);
+    if (keys) {
+        if (!keys.includes(api) && req.method !== "GET" && req.url !== "/login") {
+            return res.status(403).send('access denied')
+        }else{
+            next()
+        }
+    }else{
+        res.send('not apikey in databases')
+    }
+}
+
+function errorsValidations(err, req, res) {
+    res.status(err.status).send(err.message)
 }
 
 function BadRequest(req,res) {
@@ -28,5 +43,6 @@ module.exports = {
     Autorization,
     Validation,
     Helmet,
-    Morgan
+    Morgan,
+    errorsValidations
 }

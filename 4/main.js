@@ -102,7 +102,7 @@ plane1.position.set(-5, 0, -5);
 plane1.shadowMapEnabled = true;
 plane1.receiveShadow = true;
 const geometry2 = new THREE.BoxGeometry(1, 1, 1);
-const material2 = new THREE.MeshPhongMaterial({color: "blue"});
+const material2 = new THREE.MeshPhongMaterial({color: "gray"});
 const cube = new THREE.Mesh(geometry2, material2);
 cube.position.y = 0.5
 cube.position.x = -1
@@ -129,8 +129,8 @@ geometry3.setAttribute(
 );
 geometry3.setIndex(indices1);
 geometry3.computeVertexNormals();
-let material3 = new THREE.MeshPhongMaterial({ color: "blue", side: THREE.DoubleSide });
-let triangle = new THREE.Mesh(geometry3, new THREE.MeshPhongMaterial({ color: "blue", side: THREE.DoubleSide }));
+let material3 = new THREE.MeshPhongMaterial({ color: "gray", side: THREE.DoubleSide });
+let triangle = new THREE.Mesh(geometry3, new THREE.MeshPhongMaterial({ color: "gray", side: THREE.DoubleSide }));
 triangle.position.set(0, 0, 0);
 triangle.castShadow = true;
 triangle.receiveShadow = true;
