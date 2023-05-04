@@ -32,19 +32,12 @@ async function Create(collections, data){
     }
 }
 
-async function Update(db, id, data){
-    try {
-        const object = await db.collection(collections).findOne({_id: new ObjectId(id)})
-        if (object) {
-            if (collections === "models") {
-                data.last_update = new Date()
-            }
-            return await object.updateOne({_id: new ObjectId(id)}, {$set: data})
-        }
-    }catch (err){
-        return err
-    }
+async function Update(id, data){
+    data.last_update = new Date()
+    const models = db.collection("models")
+    return await models.updateOne({_id: new ObjectId(id)}, { $set: data})
 }
+
 
 async function Delete(collections, id){
     try{

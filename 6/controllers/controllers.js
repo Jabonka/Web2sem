@@ -77,22 +77,19 @@ async function createModels(req, res, next) {
     }
 }
 
-async function updateModel(req, res, next) {
+async function updateModel(req, res, next){
     try {
-        const data = req.body
-        const id = req.params.id
-        if (ObjectId.isValid(id)){
-            if (data.name && data.name_model && data.type && data.model && data.description && data.comments){
-                await Update("models", id, data)
-                res.send("update model")
-            }else{
-                res.status(400).send("no valid data")
+        const data = req.body;
+        if (ObjectId.isValid(req.params.id)) {
+            if (data.name || data.name_model || data.type || data.model || data.description || data.comments) {
+                await Update(req.params.id, data)
+                res.status(200).send("model update")
+            } else {
+                res.status(400).send("Error: No data update")
             }
-        }else{
-            res.status(400).send("no valid id")
         }
-    }catch (err) {
-        next(error)
+    }catch (e){
+        next(e)
     }
 }
 
