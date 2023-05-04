@@ -12,7 +12,6 @@ var app=express();
 const PORT=3000;
 const host='127.0.0.1';
 
-let error = new Error('Error')
 
 
 app.use(Helmet)

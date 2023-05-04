@@ -1,7 +1,7 @@
 const {ObjectId}=require('mongodb')
 const {getAll, Create, findOneAny, Delete, Update}=require('../services/service')
 
-
+let error = new Error('Error!')
 
 async function login(req,res,next){
     try{
@@ -20,7 +20,7 @@ async function login(req,res,next){
         }
     }
     catch (err){
-        next(err)
+        next(error)
     }
 }
 
@@ -36,7 +36,7 @@ async function DeleteAcc(req,res,next) {
         }
     }
     catch (err){
-        next(err)
+        next(error)
     }
 }
 
@@ -45,7 +45,7 @@ async function getAllModels(req,res,next){
         res.send(await getAll("models"))
     }
     catch (err){
-        next(err)
+        next(error)
     }
 }
 
@@ -59,7 +59,7 @@ async function getOneModel(req,res,next){
             res.status(400).send("no valid id")
         }
     }catch (err) {
-        next(err)
+        next(error)
     }
 }
 
@@ -73,7 +73,7 @@ async function createModels(req, res, next) {
             res.status(400).send("no valid data")
         }
     }catch (err) {
-        next(err)
+        next(error)
     }
 }
 
@@ -92,7 +92,7 @@ async function updateModel(req, res, next) {
             res.status(400).send("no valid id")
         }
     }catch (err) {
-        next(err)
+        next(error)
     }
 }
 
@@ -109,7 +109,7 @@ async function deleteModel(req, res, next) {
             res.status(400).send("no valid id")
         }
     }catch (err) {
-        next(err)
+        next(error)
     }
 }
 
@@ -118,7 +118,7 @@ async function getComments(req, res, next){
     try {
         res.status(200).send(await getAll('comments'))
     }catch (err) {
-        next(err)
+        next(error)
     }
 }
 
@@ -142,7 +142,7 @@ async function postAddComments(req, res,next){
             res.status(400).send("Error: No data input")
         }
     }catch (err) {
-        next(err)
+        next(error)
     }
 }
 
