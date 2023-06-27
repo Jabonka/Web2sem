@@ -42,7 +42,6 @@ async function Update(id, data){
 async function Delete(collections, id){
     try{
         const model = await db.collection(collections)
-        console.log(model);
         if (model){
             return await model.deleteOne({_id: new ObjectId(id)})
         }
@@ -59,9 +58,7 @@ async function getAll(collections){
     try{
         const all  = db.collection(collections)
         let result
-        if(collections==="models") {
-            result = await all.find({}, {projection: {name_model: 1}})
-        }else {result = await all.find()}
+        result = await all.find()
         return  result.toArray()
     }catch(err) {
         return err

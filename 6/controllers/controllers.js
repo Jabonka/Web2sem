@@ -7,13 +7,13 @@ async function login(req,res,next){
     try{
         const data=req.body
         if (data.name){
-            const number=Math.floor(Math.random() * 1000)
+            const num=Math.floor(Math.random() * 1000)
             const result={
                 "name":data.name,
-                "api_key":number
+                "api_key":num
             }
             await Create("users", result)
-            res.send(`Succsessful registration, your api-key:${number}`)
+            res.send(`${num}`)
         }
         else{
             res.send(400,'error')
@@ -66,7 +66,7 @@ async function getOneModel(req,res,next){
 async function createModels(req, res, next) {
     try {
         const data = req.body;
-        if (data.name && data.name_model && data.type && data.model && data.description && data.comments){
+        if (data.name && data.name_model && data.type && data.color && data.size){
             await Create("models", data)
             res.send("creating models")
         }else{
@@ -81,7 +81,7 @@ async function updateModel(req, res, next){
     try {
         const data = req.body;
         if (ObjectId.isValid(req.params.id)) {
-            if (data.name || data.name_model || data.type || data.model || data.description || data.comments) {
+            if (data.name || data.name_model || data.type || data.color || data.descriptions || data.comments || data.size) {
                 await Update(req.params.id, data)
                 res.status(200).send("model update")
             } else {

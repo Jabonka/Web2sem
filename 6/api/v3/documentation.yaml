@@ -1,0 +1,247 @@
+paths:
+  /:
+    get:
+      summary: home page
+      tags:
+      - Home
+      description: Вывод на экран "Hello"
+      responses:
+        '200':
+          description: Выводит на экран "Hello"
+  
+  
+  /comments:
+    get:
+      summary: Все комментарии
+      tags:
+      - Comments
+      description: Возвращает все комментарии
+      responses:
+        '200':
+          description: Возвращает массив комментариев
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comments" 
+    post:
+      security:
+        - apikey: []
+      summary: Создать комментарий
+      tags:
+      - Comments
+      description: Создание нового комментария
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Comment"
+      responses:
+        '200':
+          description: Комментарий создан
+
+  /comments/{id}:
+    get:
+      summary: Найти комментарий по id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID комментария
+        schema:
+          type: string
+      tags:
+      - Comments
+      description: Возвращает найденный по id комментарий
+      responses:
+        '200':
+          description: Возвращает комментарий в json формате
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+
+  /models:
+    get:
+      summary: Все модели
+      tags:
+      - Models
+      description: Возвращает все модели
+      responses:
+        '200':
+          description: Возвращает массив моделей
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                  name_model:
+                    type: string
+    post:
+      security:
+        - apikey: []
+      summary: Создать модель
+      tags:
+      - Models
+      description: Создание новой модели
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Model"
+      responses:
+        '200':
+          description: create model
+
+  /models/{id}:
+    get:
+      summary: Найти модель по ip
+      tags: 
+      - Models
+      description: Возвращает найденную по id модель
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID модели
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Возвращает модель в json формате
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Models"
+    put:
+      security:
+        - apikey: []
+      tags: 
+      - Models
+      summary: Обновить модель
+      description: Возвращает обновленную модель
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID модели
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Model"
+      responses:
+        '200':
+          description: update model
+    delete:
+      security:
+        - apikey: []
+      summary: Удалить модель
+      tags:
+      - Models
+      description: Удаление выбранной модели
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID модели
+          schema:
+            type: string
+      responses:
+        '200':
+          description: model delete
+
+  /login:
+    post:
+      tags:
+      - API
+      summary: Создание api-key
+      description: Создание api-key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      produces:
+      - text/plain
+      responses:
+        '200':
+          description: sends your apikey
+
+  /account/delete/{id}:
+    delete:
+      tags:
+      - API
+      security:
+        - apikey: []
+      summary: Удаление api-key
+      description: Удаление api-key
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID аккаунта
+          schema:
+            type: string
+      responses:
+        '200':
+          description: deleted your apikey
+
+
+components:
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: api_key
+  schemas:
+    Model:
+      type: object
+      required:
+        - name
+        - name_model
+        - type
+        - model
+        - description
+        - comments
+      properties:
+        name:
+          type: string
+        name_model:
+          type: string
+        type:
+          type: string
+        model:
+          type: string
+        description:
+          type: string
+        comments:
+          type: string
+    Models:
+      type: array
+      items:
+        $ref: "#/components/schemas/Model"
+    Comment:
+      type: object
+      required:
+        - name
+        - text
+      properties:
+        name:
+          type: string
+        text:
+          type: string
+    Comments:
+      type: array
+      items:
+        $ref: "#/components/schemas/Comment"

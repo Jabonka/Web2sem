@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+:root {
+    font-family: "Didact Gothic", sans-serif;
+    padding-bottom: 30px;
+}
+main {
+    max-width: 38rem;
+    padding: 2rem;
+    margin: auto;
+}
+html {
+    max-width: 70ch;
+    padding: 3em 1em;
+    margin: auto;
+    line-height: 1.75;
+    font-size: 1.25em;
+}
+h1,h2,h3,h4,h5,h6 {
+    margin: 3em 0 1em;
+    text-align: center;
+}
+p,ul,ol {
+    margin-bottom: 2em;
+    color: white;
+    font-family: sans-serif;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+    justify-content: center;
+}
+
+table {
+    border: 3px solid #380653;
+}
+th {
+    font-weight: normal;
+    color: rgb(58, 8, 75);
+    border-bottom: 1px dashed #380653;
+    padding: 12px 17px;
+}
+td {
+    color: #380653;
+    padding: 7px 17px;
+}
+tr:hover td {
+    background: #bc99ce;
+}
+caption{
+    padding-bottom: 10px;
+}
+button{
+    border-radius: 5px;
+    border-color: #380653;
+    background-color: #b062da;
+    font-family: "Didact Gothic", sans-serif;
+    color:white;
+    border-width: 5px;
+    font-size: 15px;
+}
+
+button:disabled{
+    background-color: #9173a1;
+    border-color: #7a6d81;
+    color: rgb(228, 223, 228);
+}
+input {
+    box-sizing: border-box;
+    width: 286px;
+    height: 50px;
+    border: 2px solid #380653;
+    border-radius: 5px;
+    margin-top: 0px;
+    padding-left: 1rem;
+}
+#send{
+    height: 50px;
+}
+#update{
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+}
+input{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#canvas-wrapper, #can-wrap, #can-wrap1{
+    min-width: 200px;
+    height: 200px;
+    max-height: 300px;
+    margin-top: 10px;
+}
+
+#flex-div{
+    display: flex;
+    align-items: center;
+}
+
+#add{
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+#form{
+    flex-direction: column;
+    align-items: center;
+}

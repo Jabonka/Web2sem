@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модели</title>
+</head>
+<body>
+    <h1>Лабораторная работа №11</h1>
+    <form>
+        <label for="name">Имя:</label>
+        <input type="text" name="name" required id="name" placeholder="Jabonka">
+        <button type="button" id="send" onclick="sendName()">Отправить</button>
+    </form>
+    <button id="update">Обновить таблицу</button>
+    <div id="table" class="flex">
+        <table id="model"><caption>Список моделей</caption></table>
+        <div id="flex-div">
+        </div>
+    </div>
+    <div id="addMod"></div>
+    <button id="add" disabled>Добавить модель</button>
+    <script type="module" src="Three.js"></script>
+    <script src="model.js"></script>
+</body>
+</html>

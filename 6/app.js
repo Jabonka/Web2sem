@@ -1,9 +1,8 @@
 var express=require('express');
 const router = require('./api/v3/route')
-const {Autorization, BadRequest, Morgan,Helmet, errorsValidations} = require('./api/v1/middleware');
+const {Autorization, BadRequest, Morgan,Helmet, errorsValidations,swaggerDocs, originHeaderMiddleware} = require('./api/v1/middleware');
 const bodyParser=require('body-parser');
-const {getDB,start}=require('./config/connDB')
-var cowsay = require("cowsay");
+const swaggerUI = require('swagger-ui-express')
 
 
 
@@ -20,8 +19,9 @@ app.use(Morgan)
 app.use(bodyParser.json());
 app.use(express.static('public'))
 
-
+app.use(originHeaderMiddleware)
 app.use('/api/v3',Autorization, router); //уровень маршрутизатора
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 app.use(BadRequest) //уровень приложения
 app.use(errorsValidations)
 
